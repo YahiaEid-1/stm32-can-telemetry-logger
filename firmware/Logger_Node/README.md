@@ -144,15 +144,16 @@ The final test confirmed that the Logger Node could receive live IMU data over C
 
 ## Final Logging Rate
 
-The final system logged approximately:
+The optimised Logger Node firmware achieved approximately:
 
 | Parameter | Value |
 |---|---|
 | Complete IMU samples | ~10 samples/s |
 | CAN frames received | ~20 frames/s |
 | CSV rows written | ~10 rows/s |
+| Long-duration test | ~30,000 rows in 50 minutes |
 
-The rate was intentionally limited to prioritise reliable SD card writing during prototype testing.
+The logging rate improved after replacing per-row `f_open()` / `f_close()` operations with a persistent file handle and periodic `f_sync()`.
 
 ## Notes
 
