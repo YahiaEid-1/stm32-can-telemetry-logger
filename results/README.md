@@ -59,6 +59,14 @@ The `uart_outputs/` folder contains screenshots from staged validation tests, su
 - DS3231 RTC timestamp verification
 - microSD/FatFS mounting and file writing
 - Final two-node CAN-to-SD integration
+- 
+## Long-Duration Logging Test
+
+A long-duration bench test was performed to check sustained CAN reception and SD card logging reliability.
+
+The optimised Logger Node firmware produced approximately 30,000 CSV rows in 50 minutes, corresponding to an average sustained logging rate of approximately 10 samples/s.
+
+This confirmed that keeping `LOG.CSV` open during acquisition and periodically calling `f_sync()` significantly improved logging performance compared with opening and closing the file for every row.
 
 ## Notes
 
