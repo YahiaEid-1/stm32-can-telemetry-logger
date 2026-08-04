@@ -151,7 +151,10 @@ The report documents the system architecture, hardware design, firmware implemen
 
 Version 1.0 is a bench-tested prototype.
 
-The system successfully demonstrates the full embedded telemetry pipeline from IMU sensing to CAN transmission, RTC timestamping, SD card logging, and MATLAB visualisation.
+The system successfully demonstrates the full embedded telemetry pipeline from IMU sensing to CAN transmission, RTC timestamping, SD card logging, and MATLAB visualisation and achieves 4.4 rows written/s.
+
+Version 1.1 introduces faster logging of data.
+The logging rate improved after replacing per-row `f_open()` / `f_close()` operations with a persistent file handle and periodic `f_sync()`.
 
 ## Limitations
 
@@ -173,5 +176,4 @@ Possible future improvements include:
 - additional CAN-based sensor nodes
 - thermal, wheel speed, current, or GPS telemetry
 - magnetometer-assisted yaw estimation
-- improved SD logging through buffering
 - longer-duration testing under vibration and electrical noise
