@@ -123,6 +123,9 @@ The `results/` folder contains test evidence from the final system, including:
 - MATLAB-generated plots
 - UART output screenshots
 - physical board vs MATLAB replay comparison video
+- A 50-minute continuous logging test produced approximately 30,000 timestamped IMU samples, corresponding to an average sustained logging rate of approximately 10 samples/s.
+
+The Logger Node firmware was optimised by keeping `LOG.CSV` open during acquisition and periodically calling `f_sync()`, improving sustained logging performance compared with opening and closing the file for every row.
 
 The replay comparison provides qualitative validation of the full telemetry chain:
 
